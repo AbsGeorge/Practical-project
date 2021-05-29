@@ -132,4 +132,4 @@ dmypy.json
 *.db
 
 # deploy bash script 
-/services/*.sh
+/services/*.sh./deploy.sh
