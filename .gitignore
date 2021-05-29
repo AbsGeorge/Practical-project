@@ -131,5 +131,5 @@ dmypy.json
 .vscode/
 *.db
 
-
-deploy.sh
+# deploy bash script 
+/services/*.sh
