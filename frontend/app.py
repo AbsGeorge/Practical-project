@@ -6,7 +6,9 @@ app = Flask(__name__)
 #Home route 
 @app.route('/', methods=['GET'])
 def home():
-    return 
+    country = requests.get('http://backend-api:5000/get_country')
+    match = requests.post('http://backend-api:5000/get_match', data=country.text)
+    return render_template('index.html', country = country.text, match = match.text) 
 
 
 if __name__ == "__main__":
