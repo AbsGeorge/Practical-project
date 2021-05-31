@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: 'frontend'
+    image: henil13/frontend
+    build: ./frontend
+    ports:
+    - published: 5000
+      target: 5000
+  backend-country:
+    container_name: 'backend-country-api'
+    image: henil13/backend-country-api
+    build: ./backend-country     
+  backend:
+    container_name: 'backend-api'
+    image: henil13/backend-api
+    build: ./backend
+ 

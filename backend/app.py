@@ -3,17 +3,14 @@ import random
 
 app = Flask(__name__)
 
-country_list = ['England', 'Spain', 'Germany', 'Italy', 'France']
-Premierleague = ['Manchester City', 'Manchester United', 'Liverpool', 'Chelsea'] 
-LaLiga = ['Atletico Madrid', 'Real Madrid', 'Barcelona', 'Sevilla']
-Bundesliga = ['Bayern Munich', 'RB Leipzig', 'Dortmund', 'Wolfsburg']
-SerieA = ['Inter Milan', 'AC Milan', 'Atalanta', 'Juventus']
-Ligue1 = ['Lille', 'PSG', 'Monaco', 'Lyon']
+
+Premierleague = ['Manchester City', 'Manchester United', 'Liverpool', 'Chelsea', 'Leicester City', 'West Ham', 'Tottenham', 'Arsenal', 'Leeds United', 'Everton'] 
+LaLiga = ['Atletico Madrid', 'Real Madrid', 'Barcelona', 'Sevilla', 'Real Sociedad', 'Real Betis', 'Villarreal', 'Celta Vigo', 'Granada', 'Athletic Club']
+Bundesliga = ['Bayern Munich', 'RB Leipzig', 'Dortmund', 'Wolfsburg', 'Eintracht Frankfurt', 'Leverkusen', 'Union Berlin', 'Monchengladbach', 'Stuttgart', 'SC Freiburg']
+SerieA = ['Inter Milan', 'AC Milan', 'Atalanta', 'Juventus', 'Napoli', 'Lazio', 'Roma', 'Sassuolo', 'Sampdoria', 'Verona']
+Ligue1 = ['Lille', 'PSG', 'Monaco', 'Lyon', 'Marseille', 'Rennes', 'Lens', 'Montpellier', 'Nice', 'Metz']
 
 
-@app.route('/get_country', methods=['GET'])
-def get_country():
-    return random.choice(country_list)
 
 @app.route('/get_match', methods=['POST'])
 def get_match():
