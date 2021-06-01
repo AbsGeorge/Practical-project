@@ -5,8 +5,21 @@
     <body>
         <h1> Champions League Fifa Matchup</h1>
 
+        <button onClick= "window.location.reload();">Create New Match</button>
+
         <p> 
-            {{ match }}
+            Team 1: {{ team1 }} vs Team 2: {{ team2 }}
+        </p>
+
+
+        <h1> The last 5 matchups </h1>
+
+        <p>
+            {% for matchup in last_five_matchups %}
+
+            Team 1: {{ matchup.Team1 }} vs Team 2: {{ matchup.Team2 }}
+            <br>
+            {% endfor %}
         </p>
     </body>
 </html>

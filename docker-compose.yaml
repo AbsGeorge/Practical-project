@@ -4,13 +4,19 @@ services:
     container_name: 'frontend'
     image: henil13/frontend
     build: ./frontend
+    environment: 
+      DATABASE_URI: sqlite:///data.db
     ports:
     - published: 5000
       target: 5000
   backend-country:
     container_name: 'backend-country-api'
     image: henil13/backend-country-api
-    build: ./backend-country     
+    build: ./backend-country   
+  backend-numbers:
+    container_name: 'backend-number-api'
+    image: henil13/backend-number-api
+    build: ./backend-numbers       
   backend:
     container_name: 'backend-api'
     image: henil13/backend-api
