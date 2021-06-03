@@ -7,6 +7,10 @@ pipeline {
                 sh "./jenkins/test.sh"
             }
         }
-
+        stage('Build images') {
+            steps {
+                sh "./jenkins/build.sh"
+            }
         }
+    }
 }
