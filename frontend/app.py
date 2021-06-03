@@ -9,11 +9,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
 
 db = SQLAlchemy(app)
 
-class Matchup(db.Model):
+class matchup(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    Country = db.Column(db.String(30), nullable=False)
-    Team1 = db.Column(db.String(30), nullable=False)
-    Team2 = db.Column(db.String(30), nullable=False)
+    country = db.Column(db.String(30), nullable=False)
+    team1 = db.Column(db.String(30), nullable=False)
+    team2 = db.Column(db.String(30), nullable=False)
 
 #Home route 
 @app.route('/', methods=['GET'])
@@ -28,15 +28,15 @@ def home():
     team2 = requests.post('http://backend-api:5000/get_team2', json = match)
 
     db.session.add(
-        Matchup(
-            Country = country.json()["country"],
-            Team1 = team1.text,
-            Team2 = team2.text
+        matchup(
+            country = country.json()["country"],
+            team1 = team1.text,
+            team2 = team2.text
         )
     )
     db.session.commit()
 
-    last_five_matchups = Matchup.query.all()
+    last_five_matchups = matchup.query.all()
 
 
     return render_template('index.html', country = country.text, team1 = team1.text, team2 = team2.text, last_five_matchups = last_five_matchups) 

@@ -11,7 +11,6 @@ SerieA = ['Inter Milan', 'AC Milan', 'Atalanta', 'Juventus', 'Napoli', 'Lazio', 
 Ligue1 = ['Lille', 'PSG', 'Monaco', 'Lyon', 'Marseille', 'Rennes', 'Lens', 'Montpellier', 'Nice', 'Metz']
 
 
-
 @app.route('/get_team1', methods=['POST'])
 def get_team1():
     player1_number = random.randint(1, 50)
