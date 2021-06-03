@@ -20,10 +20,5 @@ pipeline {
                 sh "./jenkins/build.sh"
             }
         }
-        stage('Push images') {
-            steps {
-                sh 
-            }        
-        }
     }
 }
