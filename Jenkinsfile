@@ -25,5 +25,10 @@ pipeline {
                 sh "./jenkins/push.sh"
             }
         }
+        stage('Set-up Ansible') { 
+            steps {
+                sh "./jenkins/ansible.sh"
+            }
+        }
     }
 }
