@@ -30,5 +30,10 @@ pipeline {
                 sh "./jenkins/ansible.sh"
             }
         }
+        stage('Configuration') {
+            steps {
+                sh 'ansible-playbook -i ./ansible/inventory.yaml ./ansible/playbook.yaml'
+            }
+        }
     }
 }

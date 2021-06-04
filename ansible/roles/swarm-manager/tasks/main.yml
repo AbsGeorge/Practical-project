@@ -1,0 +1,12 @@
+- name: "Init a new swarm" 
+  docker_swarm:
+    state: present
+
+- name: "Get info on Docker Swarm"
+  docker_swarm_info:
+  ignore_errors: yes
+  register: swarm_info 
+
+- name: "Show information"
+  debug:
+    msg: "{{ swarm_info }}"
