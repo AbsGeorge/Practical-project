@@ -5,3 +5,9 @@
     advertise_addr: host-2
     join_token: "{{ hostvars['host-1']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
     remote_addrs: [ 'host-1:2377' ]
+
+- name: 'jenkins user'
+  user:
+    name: jenkins
+    comment: Jenkins Automation User
+    shell: /bin/bash

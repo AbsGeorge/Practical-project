@@ -10,3 +10,9 @@
 - name: "Show information"
   debug:
     msg: "{{ swarm_info }}"
+
+- name: 'jenkins user'
+  user:
+    name: jenkins
+    comment: Jenkins Automation User
+    shell: /bin/bash
