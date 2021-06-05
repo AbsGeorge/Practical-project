@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         DOCKER_LOGIN = credentials("DOCKER_LOGIN")
-        ssh = credentials("c9758f62-6943-4d80-b212-6eaa3f03acd4")
+        DATABASE_URI = credentials("DATABASE_URI")
     }
     stages {
         stage('Test') {
