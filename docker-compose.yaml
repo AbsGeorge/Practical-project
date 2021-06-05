@@ -12,19 +12,19 @@ services:
     - published: 5000
       target: 5000
   backend-country:
-    container_name: 'backend-country-api'
+    container_name: 'backend-country'
     image: henil13/backend-country-api
     build: ./backend-country 
     deploy:
       replicas: 2  
   backend-numbers:
-    container_name: 'backend-number-api'
+    container_name: 'backend-numbers'
     image: henil13/backend-number-api
     build: ./backend-numbers
     deploy:
       replicas: 2       
   backend:
-    container_name: 'backend-api'
+    container_name: 'backend'
     image: henil13/backend-api
     build: ./backend
     deploy:
