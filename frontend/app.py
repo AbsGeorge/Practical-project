@@ -18,14 +18,14 @@ class matchup(db.Model):
 #Home route 
 @app.route('/', methods=['GET'])
 def home():
-    country = requests.get('http://backend-country-api:5000/get_country')
-    team1_number = requests.get('http://backend-number-api:5000/get_team1_number')
-    team2_number = requests.get('http://backend-number-api:5000/get_team2_number')
+    country = requests.get('http://backend-country:5000/get_country')
+    team1_number = requests.get('http://backend-number:5000/get_team1_number')
+    team2_number = requests.get('http://backend-number:5000/get_team2_number')
     
     match = dict(**country.json(), **team1_number.json(), **team2_number.json())
 
-    team1 = requests.post('http://backend-api:5000/get_team1', json = match)
-    team2 = requests.post('http://backend-api:5000/get_team2', json = match)
+    team1 = requests.post('http://backend:5000/get_team1', json = match)
+    team2 = requests.post('http://backend:5000/get_team2', json = match)
 
     db.session.add(
         matchup(
