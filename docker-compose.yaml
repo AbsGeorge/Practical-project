@@ -17,10 +17,10 @@ services:
     build: ./backend-country 
     deploy:
       replicas: 2  
-  backend-number:
-    container_name: 'backend-number'
-    image: henil13/backend-number
-    build: ./backend-number
+  backend-numbers:
+    container_name: 'backend-numbers'
+    image: henil13/backend-numbers
+    build: ./backend-numbers
     deploy:
       replicas: 2       
   backend:

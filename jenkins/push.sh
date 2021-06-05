@@ -4,7 +4,7 @@
 docker push henil13/frontend:latest
 
 #Push backend-number image
-docker push henil13/backend-number:latest
+docker push henil13/backend-numbers:latest
 
 #Push backend-country image 
 docker push henil13/backend-country:latest

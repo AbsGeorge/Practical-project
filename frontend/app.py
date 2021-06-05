@@ -19,8 +19,8 @@ class matchup(db.Model):
 @app.route('/', methods=['GET'])
 def home():
     country = requests.get('http://backend-country:5000/get_country')
-    team1_number = requests.get('http://backend-number:5000/get_team1_number')
-    team2_number = requests.get('http://backend-number:5000/get_team2_number')
+    team1_number = requests.get('http://backend-numbers:5000/get_team1_number')
+    team2_number = requests.get('http://backend-numbers:5000/get_team2_number')
     
     match = dict(**country.json(), **team1_number.json(), **team2_number.json())
 
