@@ -4,6 +4,8 @@ services:
     container_name: 'frontend'
     image: henil13/frontend
     build: ./frontend
+    deploy:
+      replicas: 2
     environment: 
       DATABASE_URI: sqlite:///data.db
     ports:
@@ -12,13 +14,20 @@ services:
   backend-country:
     container_name: 'backend-country-api'
     image: henil13/backend-country-api
-    build: ./backend-country   
+    build: ./backend-country 
+    deploy:
+      replicas: 2  
   backend-numbers:
     container_name: 'backend-number-api'
     image: henil13/backend-number-api
-    build: ./backend-numbers       
+    build: ./backend-numbers
+    deploy:
+      replicas: 2       
   backend:
     container_name: 'backend-api'
     image: henil13/backend-api
     build: ./backend
+    deploy:
+      replicas: 2
+      
  
