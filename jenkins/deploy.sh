@@ -8,5 +8,4 @@ scp docker-compose.yaml jenkins@host-1:/home/jenkins/
 ssh jenkins@host-1 << EOF 
 cd /home/jenkins
 docker stack deploy --compose-file docker-compose.yaml service
-docker-compose exec frontend python3 create.py
 EOF
