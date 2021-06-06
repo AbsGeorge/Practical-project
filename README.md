@@ -23,7 +23,7 @@
 
 ### Objective
 
-- The objective of this project is to create an application that takes advantage Microservices, which is an application architectural style that is hailed in the DevOps Ecosystem.
+- The objective of this project is to create an application that takes advantage of the idea of Microservices, which is an application architectural style that is highly regarded in the DevOps Ecosystem.
 
 ```
 The following stack of technology was required for this application:
@@ -46,19 +46,6 @@ The following stack of technology was required for this application:
 
 - The application is designed to create random matchups that users can use as inspiration when playing fifa against their friends. 
 
-
-In regards to this project, the application makes use of 4 services. Comprising of a **Frontend** service that communicates with the other three. It receives different information from the two services **Backend-numbers** **Backend-country**. Which is then sent to the final service **Backend** that makes use of information from these two services to generate an output which is then sent back to the frontend, to be displayed on the HTML page. 
-
-```
-Service 1 [Frontend] : Displays the most recent matchup that has been created as well as the last 5 matchups that were generated. 
-
-Service 2 [Backend-numbers]: Generates two individual numbers that are then assigned to player 1 and player 2.
-
-Service 3 [Backend-country]: Picks between a list of the countries that are home to the top 5 football leagues in the world. 
-
-Service 4 [Backend]: The final service creates the fifa matchup that will be displayed on service 1 based on information from service 2 and service 3.
-
-```
 
 ## Architecture
 
@@ -114,10 +101,10 @@ Install Ansible:
 
 ### Stage 6
 Ansible configuration:
-- Using a ***playbook.yaml***, ***inventory.yaml*** and ***roles***, all thr relevant dependencies are installed for each VM that will be a part of my docker swarm. 
+- Using a ***playbook.yaml***, ***inventory.yaml*** and ***roles***, all the relevant dependencies are installed for each VM that will be a part of my docker swarm. 
 - The swarm manager is set up. 
 - The swarm workers are set up. 
-- Nginx server is set up and reloaded with the right information in its nginx.conf.
+- Nginx server is set up and reloaded with the right information in its ***nginx.conf***.
 
 ### Stage 7
 Deployment:
@@ -142,6 +129,19 @@ Deployment:
 ```
 ### **Application services** 
 
+
+In regards to this project, the application makes use of 4 services. Comprising of a **Frontend** service that communicates with the other three. It receives different information from the two services **Backend-numbers** **Backend-country**. Which is then sent to the final service **Backend** that makes use of information from these two services to generate an output which is then sent back to the frontend, to be displayed on the HTML page. 
+
+```
+Service 1 [Frontend] : Displays the most recent matchup that has been created as well as the last 5 matchups that were generated. 
+
+Service 2 [Backend-numbers]: Generates two individual numbers that are then assigned to player 1 and player 2.
+
+Service 3 [Backend-country]: Picks between a list of the countries that are home to the top 5 football leagues in the world. 
+
+Service 4 [Backend]: The final service creates the fifa matchup that will be displayed on service 1 based on information from service 2 and service 3.
+
+```
 ```
 
 
@@ -161,6 +161,18 @@ The user is also given the option to press a button that generates a new matchup
 ### **Unit-Testing** 
 
 - Due to the application being designed in a microservice architecture. Individual unit tests are created for each service. Where the routes for each service are tested seperately. 
+- Jenkins will automatically run tests when new code is pushed into the central repository as the pipeline is connected via webhook.
+
+## Footer 
+
+### Future Improvements:
+
+- Nginx load balance 
+- Create database container with volume attached to secure data beign held 
+- Improve design of frontend.
+- Include ability to generate random teams depending on how many users are playing fifa. 
+- Append database security.
+
 
 
 
