@@ -1,4 +1,4 @@
-from flask import url_for, request,
+from flask import url_for, request
 from flask_testing import TestCase
 import requests_mock
 from app import app 
@@ -10,10 +10,7 @@ class TestBase(TestCase):
 
 class TestCountryEngland(TestBase):
     def test_get_England(self):
-
         #mock data
-        
-
         with patch('random.choice') as p:
             p.return_value = "England"
         
