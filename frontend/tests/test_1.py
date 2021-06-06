@@ -30,11 +30,11 @@ class TestHome(TestBase):
 
 
         with requests_mock.Mocker() as mocker:
-            mocker.get('http://backend-country-api:5000/get_country', json = country)
-            mocker.get('http://backend-number-api:5000/get_team1_number', json = team1_number2)
-            mocker.get('http://backend-number-api:5000/get_team2_number', json = team2_number)
-            mocker.post('http://backend-api:5000/get_team1', text = 'Manchester United' )
-            mocker.post('http://backend-api:5000/get_team2', text = 'Classic XI')
+            mocker.get('http://backend-country:5000/get_country', json = country)
+            mocker.get('http://backend-numbers:5000/get_team1_number', json = team1_number2)
+            mocker.get('http://backend-numbers:5000/get_team2_number', json = team2_number)
+            mocker.post('http://backend:5000/get_team1', text = 'Manchester United' )
+            mocker.post('http://backend:5000/get_team2', text = 'Classic XI')
 
             response = self.client.get(url_for('home'))
 
@@ -51,11 +51,11 @@ class TestHome2(TestBase):
 
 
         with requests_mock.Mocker() as mocker:
-            mocker.get('http://backend-country-api:5000/get_country', json = country)
-            mocker.get('http://backend-number-api:5000/get_team1_number', json = team1_number)
-            mocker.get('http://backend-number-api:5000/get_team2_number', json = team2_number)
-            mocker.post('http://backend-api:5000/get_team1', text = 'Classic XI' )
-            mocker.post('http://backend-api:5000/get_team2', text = 'Classic XI')
+            mocker.get('http://backend-country:5000/get_country', json = country)
+            mocker.get('http://backend-numbers:5000/get_team1_number', json = team1_number)
+            mocker.get('http://backend-numbers:5000/get_team2_number', json = team2_number)
+            mocker.post('http://backend:5000/get_team1', text = 'Classic XI' )
+            mocker.post('http://backend:5000/get_team2', text = 'Classic XI')
 
             response = self.client.get(url_for('home'))
 
@@ -74,11 +74,11 @@ class TestHome3(TestBase):
 
 
         with requests_mock.Mocker() as mocker:
-            mocker.get('http://backend-country-api:5000/get_country', json = country)
-            mocker.get('http://backend-number-api:5000/get_team1_number', json = team1_number)
-            mocker.get('http://backend-number-api:5000/get_team2_number', json = team2_number)
-            mocker.post('http://backend-api:5000/get_team1', text = 'Classic XI' )
-            mocker.post('http://backend-api:5000/get_team2', text = 'Atletico Madrid')
+            mocker.get('http://backend-country:5000/get_country', json = country)
+            mocker.get('http://backend-numbers:5000/get_team1_number', json = team1_number)
+            mocker.get('http://backend-numbers:5000/get_team2_number', json = team2_number)
+            mocker.post('http://backend:5000/get_team1', text = 'Classic XI' )
+            mocker.post('http://backend:5000/get_team2', text = 'Atletico Madrid')
 
             response = self.client.get(url_for('home'))
 
@@ -95,11 +95,11 @@ class TestHome4(TestBase):
 
 
         with requests_mock.Mocker() as mocker:
-            mocker.get('http://backend-country-api:5000/get_country', json = country)
-            mocker.get('http://backend-number-api:5000/get_team1_number', json = team1_number)
-            mocker.get('http://backend-number-api:5000/get_team2_number', json = team2_number)
-            mocker.post('http://backend-api:5000/get_team1', text = 'Bayern Munich' )
-            mocker.post('http://backend-api:5000/get_team2', text = 'Bayern Munich' )
+            mocker.get('http://backend-country:5000/get_country', json = country)
+            mocker.get('http://backend-numbers:5000/get_team1_number', json = team1_number)
+            mocker.get('http://backend-numbers:5000/get_team2_number', json = team2_number)
+            mocker.post('http://backend:5000/get_team1', text = 'Bayern Munich' )
+            mocker.post('http://backend:5000/get_team2', text = 'Bayern Munich' )
 
             response = self.client.get(url_for('home'))
 
