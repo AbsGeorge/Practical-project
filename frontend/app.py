@@ -1,7 +1,8 @@
 from flask import Flask, render_template 
 from flask_sqlalchemy import SQLAlchemy
 import requests
-from os import getenv 
+from os import getenv
+from sqlalchemy import desc
 
 app = Flask(__name__)
 
@@ -26,7 +27,8 @@ def home():
 
     team1 = requests.post('http://backend:5000/get_team1', json = match)
     team2 = requests.post('http://backend:5000/get_team2', json = match)
-
+    
+    last_five_matchups = matchup.query.order_by(desc(matchup.id)).limit(7).all()
     db.session.add(
         matchup(
             country = country.json()["country"],
@@ -36,7 +38,7 @@ def home():
     )
     db.session.commit()
 
-    last_five_matchups = matchup.query.all()
+    
 
 
     return render_template('index.html', country = country.text, team1 = team1.text, team2 = team2.text, last_five_matchups = last_five_matchups) 
