@@ -1,0 +1,25 @@
+<html>
+    <header>
+        <title> Fifa Matchup Generator</title>
+    </header>
+    <body>
+        <h1> Fifa Matchup Generator </h1>
+
+        <button onClick= "window.location.reload();">Create New Match</button>
+
+        <p> 
+            Team 1: {{ team1 }} vs Team 2: {{ team2 }}
+        </p>
+
+
+        <h1> The last 5 Matchups created </h1>
+
+        <p>
+            {% for matchup in last_five_matchups %}
+
+            Team 1: {{ matchup.team1 }} vs Team 2: {{ matchup.team2 }}
+            <br>
+            {% endfor %}
+        </p>
+    </body>
+</html>

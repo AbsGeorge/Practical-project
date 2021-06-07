@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: 'frontend'
+    image: henil13/frontend
+    build: ./frontend
+    deploy:
+      replicas: 2
+    environment: 
+      DATABASE_URI: ${DATABASE_URI}
+    ports:
+    - published: 5000
+      target: 5000
+  backend-country:
+    container_name: 'backend-country'
+    image: henil13/backend-country
+    build: ./backend-country 
+    deploy:
+      replicas: 2  
+  backend-numbers:
+    container_name: 'backend-numbers'
+    image: henil13/backend-numbers
+    build: ./backend-numbers
+    deploy:
+      replicas: 2       
+  backend:
+    container_name: 'backend'
+    image: henil13/backend
+    build: ./backend
+    deploy:
+      replicas: 2
+      
+ 
