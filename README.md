@@ -220,7 +220,9 @@ docker run -d --name backend-api --network fifa_matchup_network backend-api
 
 
 ```
-- As the project progressed further , these manual commands were replaced with a docker-compose.yaml file that would create all the images and then other scrips were created to be implemented in the pipeline so that all stages are automated. This deploy.sh file is no longer needed.
+- As the project progressed further , these manual commands were replaced with a docker-compose.yaml file that would create all the images and then other scrips were created to be implemented in the pipeline so that all stages are automated. This deploy.sh file shown above is no longer needed. 
+
+- The block of code below is taken from my docker-compose.yaml to show how images are now created in the pipeline.
 
 ```
 version: '3.8'
