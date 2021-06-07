@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-country_list = ['England', 'Spain', 'Germany', 'Italy', 'France']
+country_list = ['England', 'Spain', 'Germany', 'Italy', 'France', 'USA']
 
 @app.route('/get_country', methods=['GET'])
 def get_country():

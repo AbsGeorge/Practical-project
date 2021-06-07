@@ -9,6 +9,7 @@ LaLiga = ['Atletico Madrid', 'Real Madrid', 'Barcelona', 'Sevilla', 'Real Socied
 Bundesliga = ['Bayern Munich', 'RB Leipzig', 'Dortmund', 'Wolfsburg', 'Eintracht Frankfurt', 'Leverkusen', 'Union Berlin', 'Monchengladbach', 'Stuttgart', 'SC Freiburg']
 SerieA = ['Inter Milan', 'AC Milan', 'Atalanta', 'Juventus', 'Napoli', 'Lazio', 'Roma', 'Sassuolo', 'Sampdoria', 'Verona']
 Ligue1 = ['Lille', 'PSG', 'Monaco', 'Lyon', 'Marseille', 'Rennes', 'Lens', 'Montpellier', 'Nice', 'Metz']
+MLS_West = [ 'New Englan', 'Philadelphia', 'Orlando City', 'New York City', 'Montreal', 'Columbus', 'Nashville', 'Atlanta United', 'NY Red Bulls', 'D.C.United']
 
 
 @app.route('/get_team1', methods=['POST'])
@@ -41,6 +42,12 @@ def get_team1():
             team1 = "Classic XI"         
         else:
             team1 = random.choice(Ligue1)
+    elif country == 'USA':
+        if player1_number % 10 == 0:
+            team1 = "Classic XI"         
+        else:
+            team1 = random.choice(MLS_West)
+
     return team1       
 
 @app.route('/get_team2', methods=['POST'])
@@ -72,6 +79,11 @@ def get_team2():
             team2 = "Classic XI"         
         else:
             team2 = random.choice(Ligue1)
+    elif country == 'USA':
+        if player2_number % 10 == 0:
+            team2 = "Classic XI"         
+        else:
+            team2 = random.choice(MLS_West)
     return team2
 
 
