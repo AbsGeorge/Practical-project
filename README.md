@@ -5,9 +5,8 @@
   * [Objective](#objective)
   * [Proposal](#proposal)
 * [Architecture](#architecture)
+  * [Project-tracking](#project-tracking)
   * [Risk Assessment](#risk-assessment)
-  * [Kanban Board](#kanban-board)
-  * [Test Analysis](#analysis-of-testing)
 * [Infrastructure](#infrastructure)
   * [Jenkins Pipeline](#jenkins-pipeline)
   * [Entity-Relationship-Diagram](#entity-relationship-diagram)
@@ -55,6 +54,9 @@ In order to track all the different tasks I needed to complete for this project 
 
 
 ### Risk Assessment
+My risk assessment can be seen below. Risk assessments are crucial to projects to ensure that all potential threats to the success of the project are identified and mitigated.
+
+The rows highlighted in grey are risks I identified at a later stage when the creation of the application had already commenced. 
 ```
 
 
@@ -64,7 +66,7 @@ In order to track all the different tasks I needed to complete for this project 
 
 ### **Jenkins Pipeline**
 
-The main focus of the project is on the idea of Continuous deployment, where as new code is developed and pushed up the central repository. It is  automatically tested, built and then deployed to the end user. 
+The main focus of the project is on the idea of Continuous deployment, where as new code is developed and pushed up to the central repository. It is automatically tested, built and then deployed to the end user. 
 
 ### Stage 1
 Perform Tests:
@@ -73,7 +75,17 @@ Perform Tests:
 
 The following are lines of code used to run tests for each service. 
 ```
+#test frontend 
+python3 -m pytest frontend  --cov=frontend  --cov-report term-missing --cov-report xml --junitxml junit.xml 
 
+#test backend 
+python3 -m pytest backend  --cov=backend  --cov-report term-missing --cov-report xml --junitxml junit.xml
+
+#test backend-country
+python3 -m pytest backend-country  --cov=backend-country  --cov-report term-missing --cov-report xml --junitxml junit.xml
+
+#test backend-numbers
+python3 -m pytest backend-numbers  --cov=backend-numbers  --cov-report term-missing --cov-report xml --junitxml junit.xml
 
 
 ```
@@ -119,6 +131,9 @@ Deployment:
 ```
 
 ### **Docker-Swarm-Interactions** 
+Through the use of Docker Swarm, a container orchestration tool. A network is created for our virtual machines to host the application amongst one another. The user is then able to connect to the application by visiting the nginx VM URL on their browser. The nginx VM has nginx installed on it with the correct configuration file that allows it to act as a reverse proxy. 
+
+Making sure that users only access the application through the nginx server adds another layer of safety and protection. The application itself is one step further from the user preventing any issues from occuring if this wasn't the case.
 
 ```
 
@@ -130,7 +145,8 @@ Deployment:
 ### **Application services** 
 
 
-In regards to this project, the application makes use of 4 services. Comprising of a **Frontend** service that communicates with the other three. It receives different information from the two services **Backend-numbers** **Backend-country**. Which is then sent to the final service **Backend** that makes use of information from these two services to generate an output which is then sent back to the frontend, to be displayed on the HTML page. 
+In regards to this project, the application makes use of 4 services. Comprising of a **Frontend** service that communicates with the other three. The front end service sends HTTP **GET** requests to first the **Backend-country** api and then **Backend-numbers** api to get the country chosen and the numbers for the two players respectively.The information is then added to a dictionary which is then converted and sent to the last api **Backend** via a HTTP **POST** request. The **Backend** api then makes use of thr information received to produce and output based on the logic coded in this service.
+ 
 
 ```
 Service 1 [Frontend] : Displays the most recent matchup that has been created as well as the last 5 matchups that were generated. 
@@ -163,15 +179,77 @@ The user is also given the option to press a button that generates a new matchup
 - Due to the application being designed in a microservice architecture. Individual unit tests are created for each service. Where the routes for each service are tested seperately. 
 - Jenkins will automatically run tests when new code is pushed into the central repository as the pipeline is connected via webhook.
 
+```
+
+
+```
+### Refactoring 
+
+### 1.
+- Initially, when I had just changed from a monolithic application to one consisting of 3 services, where the last two services were combined. I intially created a deploy.sh file that manually built the images and set up the network and containers. 
+```
+#!/bin/bash
+
+#Build frontend image 
+docker build -t frontend frontend
+
+#Build backend_api images
+docker build -t backend-country-api backend-country
+docker build -t backend-api backend
+
+#Create network 
+docker network create fifa_matchup_network
+
+
+#Run containers 
+
+docker run -d -p 5000:5000 --name frontend --network fifa_matchup_network frontend
+docker run -d --name backend-country-api --network fifa_matchup_network backend-country-api
+docker run -d --name backend-api --network fifa_matchup_network backend-api
+
+
+```
+- As the project progressed further , these manual commands were replaced with a docker-compose.yaml file that would create all the images and then other scrips were created to be implemented in the pipeline so that all stages are automated. This deploy.sh file is no longer needed.
+
+```
+version: '3.8'
+services:
+  frontend:
+    container_name: 'frontend'
+    image: henil13/frontend
+    build: ./frontend
+    deploy:
+      replicas: 2
+    environment: 
+      DATABASE_URI: ${DATABASE_URI}
+    ports:
+    - published: 5000
+      target: 5000
+  backend-country:
+    container_name: 'backend-country'
+    image: henil13/backend-country
+    build: ./backend-country 
+    deploy:
+      replicas: 2  
+
+```
+### 2. 
+- The information being received by the frontend from the two services it sent **GET** requests to was in the form of text. Which made it difficult to send both peices of information to the **backend** api in this form. 
+- In order to overcome this obstacle, "jsonify" was imported from the flask module so that data return to the frontend would be in the form of JSON objects which could then be combined to send to the last service. 
+
+
 ## Footer 
 
 ### Future Improvements:
 
 - Nginx load balance 
-- Create database container with volume attached to secure data beign held 
+- Create database container with volume attached to secure data beingn held 
 - Improve design of frontend.
 - Include ability to generate random teams depending on how many users are playing fifa. 
 - Append database security.
+
+### Acknowledgements:
+
 
 
 
