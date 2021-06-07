@@ -12,6 +12,7 @@ pip3 install requests-mock
 pip3 install flask
 pip3 install flask-sqlalchemy
 pip3 install flask-testing 
+pip3 install pytest-cov
 
 #test frontend 
 python3 -m pytest frontend  --cov=frontend  --cov-report term-missing --cov-report xml --junitxml junit.xml 
