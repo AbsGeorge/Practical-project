@@ -187,8 +187,8 @@ The user is also given the option to press a button that generates a new matchup
 - Jenkins will automatically run tests when new code is pushed into the central repository as the pipeline is connected via webhook.
 
 
-![Cobertura](./images/Cobertura_(2).png)
-![Frontend](./images/Frontend_coverage.png)
+![Cobertura](./images/Cobertura.png)
+![Frontend](./images/Frontend.png)
 ![Backend-Numbers](./images/frontend-numbers.png)
 ![Backend-country](./images/Backend-country.png)
 
