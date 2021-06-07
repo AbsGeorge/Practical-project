@@ -52,15 +52,24 @@ The following stack of technology was required for this application:
 
 In order to track all the different tasks I needed to complete for this project I used a kanban board. It is freely available online and has a very easy and simple layout that is easy to use. It's a great way to have visual representation of all the tasks needed to complete. 
 
+![Trello 1](./images/Trello_1.png)
+
+![Trello 2](./images/Trello_2.png)
+
+![Trello 3](./images/Trello_3.png)
+
 
 ### Risk Assessment
 My risk assessment can be seen below. Risk assessments are crucial to projects to ensure that all potential threats to the success of the project are identified and mitigated.
 
 The rows highlighted in grey are risks I identified at a later stage when the creation of the application had already commenced. 
-```
 
 
-```
+![Risk-Assessment-1](./images/Risk_Assessment1.png)
+![Risk-Assessment-2](./images/Risk_Assessment2.png)
+
+
+
 
 ## Infrastructure 
 
@@ -101,10 +110,6 @@ Build/Push:
 
 - Jenkin's credential system is used to refer to my dockerhub details, allowing them to be used securely.  
 
-```
-
-
-```
 
 ### Stage 5 
 Install Ansible: 
@@ -123,25 +128,26 @@ Deployment:
 -Jenkins will copy the ***docker-compose.yaml*** file over to the swarm-manager and then run the docker stack deploy command to deploy the app to all VM in the swarm. 
 
 ### **Entity-Relationship-Diagram** 
-```
+
+![ERD](./images/ERD.png)
 
 
 
 
-```
 
 ### **Docker-Swarm-Interactions** 
 Through the use of Docker Swarm, a container orchestration tool. A network is created for our virtual machines to host the application amongst one another. The user is then able to connect to the application by visiting the nginx VM URL on their browser. The nginx VM has nginx installed on it with the correct configuration file that allows it to act as a reverse proxy. 
 
 Making sure that users only access the application through the nginx server adds another layer of safety and protection. The application itself is one step further from the user preventing any issues from occuring if this wasn't the case.
 
-```
+
+![Docker-swarm](./images/Docker_swarm.png)
 
 
 
 
 
-```
+
 ### **Application services** 
 
 
@@ -158,11 +164,12 @@ Service 3 [Backend-country]: Picks between a list of the countries that are home
 Service 4 [Backend]: The final service creates the fifa matchup that will be displayed on service 1 based on information from service 2 and service 3.
 
 ```
-```
+
+![Application-services](./images/Application_services.png)
 
 
 
-```
+
 
 ## Development 
 
@@ -179,10 +186,14 @@ The user is also given the option to press a button that generates a new matchup
 - Due to the application being designed in a microservice architecture. Individual unit tests are created for each service. Where the routes for each service are tested seperately. 
 - Jenkins will automatically run tests when new code is pushed into the central repository as the pipeline is connected via webhook.
 
-```
+
+![Cobertura](./images/Cobertura_(2).png)
+![Frontend](./images/Frontend_coverage.png)
+![Backend-Numbers](./images/frontend-numbers.png)
+![Backend-country](./images/Backend-country.png)
 
 
-```
+
 ### Refactoring 
 
 ### 1.
