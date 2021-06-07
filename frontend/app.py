@@ -28,7 +28,7 @@ def home():
     team1 = requests.post('http://backend:5000/get_team1', json = match)
     team2 = requests.post('http://backend:5000/get_team2', json = match)
     
-    last_five_matchups = matchup.query.order_by(desc(matchup.id)).limit(7).all()
+    last_five_matchups = matchup.query.order_by(desc(matchup.id)).limit(5).all()
     db.session.add(
         matchup(
             country = country.json()["country"],
